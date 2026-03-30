@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hyworth – Renewability meets Technology</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .hero {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: url("Bg-image-Hycharge.jfif") center/cover no-repeat;
+      }
+
+      .hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.18);
+        pointer-events: none;
+      }
+
+      .hero-nav {
+        position: relative;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        padding: 22px 48px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        margin-right: 40px;
+        flex-shrink: 0;
+      }
+
+      .logo img {
+        display: block;
+        height: 60px;
+        width: auto;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        list-style: none;
+        flex: 1;
+      }
+
+      .arr {
+        font-size: 0.65rem;
+        opacity: 0.85;
+      }
+
+      .btn-contact {
+        margin-left: 0;
+        background: #eeec46;
+        color: #111;
+        border: none;
+        padding: 10px 26px;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+        white-space: nowrap;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-contact:hover {
+        background: #d9ea55;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 20px;
+        margin-top: -300px;
+      }
+
+      .hero-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 300;
+        color: #0d0101;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-title strong {
+        font-weight: 700;
+        display: block;
+        letter-spacing: -0.02em;
+      }
+
+      .scroll-down {
+        position: absolute;
+        bottom: 36px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .scroll-down span {
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.03em;
+      }
+
+      .scroll-circle {
+        width: 46px;
+        height: 46px;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: bounce 2s infinite;
+      }
+
+      .scroll-circle svg {
+        width: 18px;
+        height: 18px;
+        stroke: #fff;
+        stroke-width: 2;
+        fill: none;
+      }
+
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(6px); }
+      }
+
+      #about {
+        width: 100%;
+        background: #fff;
+      }
+
+      .about-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        padding: 10px 48px;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
+        min-height: 60px;
+      }
+
+      .about-nav .logo {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        margin-right: 40px;
+      }
+
+      .about-nav .logo img {
+        display: block;
+        height: 38px;
+        width: auto;
+      }
+
+      .about-link {
+        color: #111;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-right: 20px;
+        white-space: nowrap;
+      }
+
+      .about-link:hover {
+        opacity: 0.8;
+      }
+
+      .about-nav .btn-contact {
+        background: #f3f728;
+        color: #080101;
+        border-radius: 8px;
+      }
+
+      .about-nav .btn-contact:hover {
+        background: #1450b8;
+      }
+
+      .about-body {
+        background: #fff;
+        padding: 80px 48px 10px;
+        text-align: center;
+      }
+
+      .about-heading {
+        font-size: clamp(2.4rem, 5vw, 3.8rem);
+        font-weight: 700;
+        color: #1a3a6b;
+        margin-bottom: 28px;
+      }
+
+      .about-desc {
+        max-width: 820px;
+        margin: 0 auto 60px;
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: #333;
+        font-weight: 400;
+      }
+
+      .cta-section {
+        background: #fff;
+        padding: 60px 48px;
+      }
+
+      .cta-card {
+        position: relative;
+        overflow: hidden;
+        background: #2d6be4;
+        border-radius: 16px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 52px 56px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        min-height: 180px;
+      }
+
+      .cta-card::after {
+        content: "";
+        position: absolute;
+        right: -40px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 420px;
+        height: 420px;
+        background: url("Cta-filter-img.png") center/contain no-repeat;
+        pointer-events: none;
+        opacity: 0.6;
+        mix-blend-mode: luminosity;
+      }
+
+      .cta-card::before {
+        content: "";
+        position: absolute;
+        right: -40px;
+        top: 0;
+        width: 420px;
+        height: 100%;
+        background: rgba(45, 107, 228, 0.5);
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .cta-heading {
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.3;
+        margin-bottom: 28px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-btn {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        background: #fff;
+        color: #010307;
+        text-decoration: none;
+        padding: 11px 28px;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        transition: background 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      }
+
+      .cta-btn:hover {
+        background: #f0f4ff;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+      }
+
+      #footer {
+        background: #fff;
+        border-top: 1px solid #e8e8e8;
+      }
+
+      .footer-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 28px 60px;
+        gap: 24px;
+      }
+
+      .footer-links {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        list-style: none;
+        justify-content: flex-end;
+      }
+
+      .footer-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      .footer-links a:hover {
+        color: #1a5fd4;
+      }
+
+      .footer-copy {
+        font-size: 0.88rem;
+        color: #666;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+
+      <nav class="hero-nav">
+        <a href="#" class="logo">
+          <img src="Hycharge-plainlogo.png" alt="Hyworth logo" />
+        </a>
+        <ul class="nav-links"><!-- empty --></ul>
+        <a href="#about" class="about-link" style="color:#fff;">About Us</a>
+        <a href="https://onerooftech.com/" target="_blank" class="btn-contact">Contact Us</a>
+      </nav>
+
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <strong>120 kW DC Fast EV Charging</strong>                       
+          Fast Smart Easy App-Enabled.
+        </h1>
+        <a href="https://mail.google.com/mail/?view=cm&to=support@onerooftech.com&su=Subject%3A%20I%20am%20interested%20in%20your%20HyCharge%20EV%20charging%20services&body=Hi%20HyCharge%20team%2C%0A%0AI%2C%20%5Busername%5D%2C%20am%20interested%20in%20your%20HyCharge%20EV%20charging%20services.%20I%20am%20from%20%5Blocation%5D%20and%20you%20can%20contact%20me%20on%20%5Bmobile%20number%5D.%0A%0ALet%27s%20connect." target="_blank" class="btn-contact" style="margin-top: 28px; background: #fff; color: #01030f; align-self: center;">Start Charging</a>
+      </div>
+
+      <a href="#about" class="scroll-down">
+        <span>Scroll Down</span>
+        <div class="scroll-circle">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg>
+        </div>
+      </a>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about">
+      <div class="about-nav">
+        <a href="#" class="logo">
+          <img src="Hycharge-logo.png" alt="Hyworth logo" />
+        </a>
+        <ul class="nav-links"><!-- empty --></ul>
+        <a href="#about" class="about-link">About Us</a>
+        <a href="https://onerooftech.com/" target="_blank" class="btn-contact">Contact Us</a>
+      </div>
+
+      <div class="about-body">
+        <h2 class="about-heading">About Us</h2>
+        <p class="about-desc">
+          Built by OneRoof. Designed for the EV future.
+          HyCharge is an EV charging network developed by OneRoof Technologies
+          LLP, focused on building reliable, app-first digital infrastructure
+          for modern mobility. We bring together 120 kW DC fast charging
+          hardware and a seamless mobile application to deliver an end-to-end
+          EV charging experience — from discovery to payment — without friction.<br />
+          HyCharge is designed for real-world usage: fast charging, high uptime,
+          simple digital flows, and scalability built into both software and infrastructure.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="cta-card">
+        <h2 class="cta-heading">
+          HyCharge is building a smarter charging network for<br />India's electric future.
+        </h2>
+        <a href="https://mail.google.com/mail/?view=cm&to=support@onerooftech.com&su=Subject%3A%20I%20am%20interested%20in%20your%20HyCharge%20EV%20charging%20services&body=Hi%20HyCharge%20team%2C%0A%0AI%2C%20%5Busername%5D%2C%20am%20interested%20in%20your%20HyCharge%20EV%20charging%20services.%20I%20am%20from%20%5Blocation%5D%20and%20you%20can%20contact%20me%20on%20%5Bmobile%20number%5D.%0A%0ALet%27s%20connect." target="_blank" class="cta-btn" style="margin-top: 32px;">Start Charging</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="footer-bar">
+        <div class="footer-copy">Hycharge &copy; 2026</div>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
